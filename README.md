@@ -12,18 +12,23 @@ Images Used:
 ## ◼️ Install
 Install Docker Engine and Docker Compose by following my guide.
 
-NOTE: If necessary, you can change the docker-compose version at the URL below (v2.17.3). To check the latest version, access the [URL](https://github.com/docker/compose/releases).
-
 ```shell
-cd /tmp
-curl -fsSL https://get.docker.com/ | sh
-curl -L "https://github.com/docker/compose/releases/download/v2.17.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
+apt-get update
+apt-get install ca-certificates curl gnupg
+install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+chmod a+r /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+apt-get update
+apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-Clone the repository to your system and start the deployment using docker-compose.
+Clone the repository to your system and start the deployment using docker compose.
 
-NOTE: Before deployment docker-compose, change variables editing .env file.
+NOTE: Before deployment docker compose, change variables editing .env file.
 
 ```shell
 cd /opt
@@ -32,7 +37,7 @@ cd /opt/outline-docker
 mkdir letsencrypt/
 touch letsencrypt/acme.json
 chmod 600 letsencrypt/acme.json
-docker-compose up -d
+docker compose up -d
 ```
 
 ```shell
