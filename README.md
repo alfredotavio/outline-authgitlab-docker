@@ -32,8 +32,8 @@ NOTE: Before deployment docker compose, change variables editing .env file.
 
 ```shell
 cd /opt
-git clone https://github.com/alfredotavio/outline-docker.git
-cd /opt/outline-docker
+git clone https://github.com/alfredotavio/outline-authgitlab-docker.git
+cd /opt/outline-authgitlab-docker
 mkdir letsencrypt/
 touch letsencrypt/acme.json
 chmod 600 letsencrypt/acme.json
