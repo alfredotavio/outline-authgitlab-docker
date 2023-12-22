@@ -16,7 +16,7 @@ volumes:
 services:
   outline_redis:
     container_name: outline_redis
-    image: redis
+    image: redis:latest
     networks:
       network-wiki:
         ipv4_address: 10.11.0.10
@@ -26,7 +26,7 @@ services:
 
   outline_postgres:
     container_name: outline_postgres
-    image: postgres:13
+    image: postgres:latest
     networks:
       network-wiki:
         ipv4_address: 10.11.0.11
@@ -41,7 +41,7 @@ services:
 
   outline_minio:
     container_name: outline_minio
-    image: minio/minio
+    image: minio/minio:latest
     networks:
       network-wiki:
         ipv4_address: 10.11.0.12
@@ -74,7 +74,7 @@ services:
 
   outline_minio_mc:
     container_name: outline_minio_mc
-    image: minio/mc
+    image: minio/mc:latest
     networks:
       network-wiki:
         ipv4_address: 10.11.0.13
@@ -87,7 +87,7 @@ services:
 
   outline:
     container_name: outline
-    image: outlinewiki/outline:0.69.2
+    image: outlinewiki/outline:0.74.0
     networks:
       network-wiki:
         ipv4_address: 10.11.0.14
